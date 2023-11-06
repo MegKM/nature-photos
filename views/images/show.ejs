@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+<p><%= image.alt%></p>
+
+<label>Current tags:</label>
+<% tags.forEach(function(t){ %>
+    <ul>
+        <li><%= t.description%></li>
+    </ul>
+<% }) %> 
+
+<form id="add-tag-form" method="POST"
+    action="">
+    <select>
+        <% tags.forEach(function(t){ %>
+        <option value="<%= t.description%>"><%= t.description%></option>
+        <% }) %>
+    </select>
+    <input type="text">
+    <button id="add-tag">Add new tag</button>
+
+</form>
+
+
+<br>
+<img src="<%= image.src.large2x%>"> 
+
+
+<p> Photographer: <%= image.photographer%></p>
+<p><a href="<%= image.photographer_url%>" target="_blank">View more work by this photographer</a></p>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,35 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.login img {
+  height: 30px;
+}
+
+#image-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px;
+  padding: 50px;
+}
+
+
+
+#image-button {
+  width: 200px;
+  height: 200px;
+  background-size:cover;
+  background-repeat: no-repeat;
+  margin: 20px;
+  border-radius: 25%;
+  border: none;
+}
+
+#image-button:hover {
+  box-shadow: 0px 0px 30px 15px rgb(94, 104, 101) ;
+}

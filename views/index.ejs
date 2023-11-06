@@ -1,0 +1,15 @@
+<%- include('./partials/header') %>
+  <h1><%= title %></h1>
+
+    <p>Welcome to <%= title %></p>
+    <img src="https://images.pexels.com/photos/1229846/pexels-photo-1229846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" width="500px">
+  
+<form action="/users" enctype="multipart/form-data" method="POST">
+  <div>
+    <input type="file" name="image">
+    <button type="submit">Upload</button>
+  </div>
+</form>
+
+
+<%- include('./partials/footer') %>
