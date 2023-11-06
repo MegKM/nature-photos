@@ -8,7 +8,7 @@ var passport = require('passport');
 require('dotenv').config();
 require('./config/database');
 require('./config/passport');
-const mongoStore = require('/connect-mongo');
+const mongoStore = require('connect-mongo');
 
 var indexRouter = require('./routes/index');
 var searchRouter = require('./routes/search');
