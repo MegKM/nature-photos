@@ -14,7 +14,7 @@
 
 <% if(currentTags.length !== tags.length){ %>
     <form id="add-tag-form" method="POST"
-        action="/search/<%= image._id %>/add-tag">
+        action="/image/<%= image._id %>/add-tag">
         <select name="tagId">
                 <% tags.forEach(function(t){ %>
                     <% if(t.images.includes(image._id)){ %>

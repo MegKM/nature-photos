@@ -9,8 +9,8 @@ module.exports = {
 
 async function index(req, res){
     const images = await Image.find({});
-    const tags = await Tag.find({});
-    res.render('images/search', {
+    const tags = await Tag.find({}).sort('description');
+    res.render('images/images', {
         images,
         tags,
         title: "Nature"
@@ -19,7 +19,7 @@ async function index(req, res){
 
 async function show(req, res){
     const image = await Image.findById(req.params.id);
-    const tags = await Tag.find({});
+    const tags = await Tag.find({}).sort('description');
     const currentTags = await Tag.where('images').in([req.params.id]);
     res.render('images/show', {
         image,
@@ -35,7 +35,7 @@ async function filterByTag(req, res){
     console.log("tag: ", tag)
     const images = tag.images;
     console.log('images: ', images)
-    res.render('images/search', {
+    res.render('images/images', {
         images,
         tags,
         title: "Nature"

@@ -2,16 +2,16 @@
 
 <p>Display Images</p>
 
-<a href="/search">All Images</a> 
+<a href="/Images">All Images</a> 
 
 <% tags.forEach(function (t) { %>
-    <a href="/search/tagged/<%= t.description %>"><%=t.description%></a>
+    <a href="/images/tagged/<%= t.description %>"><%=t.description%></a>
 <% }) %>
 
 <div id="image-container">
     <% images.forEach(function(i){ %>
         <form id="view-image" method="GET"
-            action="/search/<%= i._id%>">
+            action="/images/<%= i._id%>">
             <button id="image-button" style="background-image: url('<%= i.src.tiny %>')"></button>
         </form>
     <% }); %>

@@ -3,7 +3,8 @@ const Tag = require('../models/tag');
 
 module.exports = {
     addTag,
-    // create
+    new: newTag,
+    create
 }
 
 async function addTag(req, res){
@@ -12,19 +13,26 @@ async function addTag(req, res){
     const tag = await Tag.findById(req.body.tagId);
     tag.images.push(image);
     tag.save();
-    res.redirect(`/search/${image._id}`)
+    res.redirect(`/images/${image._id}`)
 }
 
-// async function create(req, res){
-//     const image = await Image.findById(req.params.id);
+async function newTag(req, res){
+    const tags = await Tag.find({}).sort('description')
+    res.render('tags/new', {
+        tags,
+        title: "Nature"
+    })
+}
 
-//     try {
-//         const tag = await Tag.create(req.body);
-//         tag.images = image;
-//         await image.save()
-//         res.redirect(`search/${image._id}`)
-//     } catch (err) {
-//         console.log(err);
-//         // newTicket();
-//     }
-// }
+
+async function create(req, res){
+    console.log(req.body)
+    try {
+        await Tag.create(req.body);
+        await Tag.save()
+    } catch (err) {
+        console.log(err);
+    }
+
+    res.redirect('/tags/new')
+}

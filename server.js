@@ -11,7 +11,7 @@ require('./config/passport');
 const mongoStore = require('connect-mongo');
 
 var indexRouter = require('./routes/index');
-var searchRouter = require('./routes/search');
+var imagesRouter = require('./routes/images');
 var tagsRouter = require('./routes/tags');
 var usersRouter = require('./routes/users');
 
@@ -45,7 +45,7 @@ app.use(function (req, res, next) {
 })
 
 app.use('/', indexRouter);
-app.use('/search', searchRouter);
+app.use('/images', imagesRouter);
 app.use('/', tagsRouter);
 app.use('/', usersRouter);
 
