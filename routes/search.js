@@ -7,4 +7,6 @@ router.get('/', imagesController.index);
 
 router.get('/:id', imagesController.show);
 
+router.get('/tagged/:tagName', imagesController.filterByTag);
+
 module.exports = router;

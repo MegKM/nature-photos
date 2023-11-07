@@ -2,6 +2,12 @@
 
 <p>Display Images</p>
 
+<a href="/search">All Images</a> 
+
+<% tags.forEach(function (t) { %>
+    <a href="/search/tagged/<%= t.description %>"><%=t.description%></a>
+<% }) %>
+
 <div id="image-container">
     <% images.forEach(function(i){ %>
         <form id="view-image" method="GET"

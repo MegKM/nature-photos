@@ -3,6 +3,7 @@ require('./config/database');
 
 const Image = require('./models/image');
 
+
 const nature = require('./databases/nature');
 
 // const emptyDatabase = async () => {
@@ -15,4 +16,6 @@ nature.forEach(async (nature) => {
     const n = new Image(nature);
     await n.save();
 });
+
+
 

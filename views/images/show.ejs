@@ -2,27 +2,34 @@
 
 <p><%= image.alt%></p>
 
-<label>Current tags:</label>
-<% tags.forEach(function(t){ %>
-    <ul>
-        <li><%= t.description%></li>
-    </ul>
-<% }) %> 
 
-<form id="add-tag-form" method="POST"
-    action="">
-    <select>
-        <% tags.forEach(function(t){ %>
-        <option value="<%= t.description%>"><%= t.description%></option>
-        <% }) %>
-    </select>
-    <input type="text">
-    <button id="add-tag">Add new tag</button>
+<% if(currentTags.length !== 0) { %>
+    <label>Current tags:</label>
+    <% currentTags.forEach(function(t){ %>
+        <ul>
+            <li><%= t.description%></li>
+        </ul>
+    <% }) %> 
+<% } %>
 
-</form>
+<% if(currentTags.length !== tags.length){ %>
+    <form id="add-tag-form" method="POST"
+        action="/search/<%= image._id %>/add-tag">
+        <select name="tagId">
+                <% tags.forEach(function(t){ %>
+                    <% if(t.images.includes(image._id)){ %>
+                        <% return; %>
+                    <% } else { %>
+                        <option value="<%= t._id%>"><%= t.description%></option>
+                    <% } %>
+                <%})%>
+        </select>
+        <button id="add-tag">Add new tag</button>
+    </form>
+<% } %>
 
 
-<br>
+<hr>
 <img src="<%= image.src.large2x%>"> 
 
 

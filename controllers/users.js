@@ -13,8 +13,8 @@ function index(req, res){
 }
 
 async function show(req, res){
-    const user = await User.findById(req.paras.id);
-    res.render('users/show', {title: "Users Details", user});
+    // const user = await User.findById(req.paras.id);
+    // res.render('users/show', {title: "Users Details", user});
 }
 
 async function create(req, res){
