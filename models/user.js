@@ -11,7 +11,11 @@ const userSchema = new Schema({
     avatar: String,
     cloudinary_id: {
       type: String
-    }
+    },
+    images:[{
+      type: Schema.Types.ObjectId,
+      ref: 'Image'
+    }]
   }, {
     timestamps: true
 });

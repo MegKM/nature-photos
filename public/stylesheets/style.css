@@ -1,26 +1,96 @@
+/* Universal --------------------------------------------*/
+
+* {
+  box-sizing: border-box;
+  font-family: 'Bitter', serif;
+}
+
 body {
-  padding: 50px;
+  display: grid;
+  grid-template-rows: 100px 1fr 100px;
+  min-height: 100vh;
+  padding: 0px;
+  margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+main {
+  padding: 20px;
+  margin: 20px;
 }
 
-.login img {
-  height: 30px;
+main > p {
+  font-size: large;
+  color: rgb(73, 95, 121);
+
 }
 
-#image-container {
+button {
+  cursor: pointer;
+}
+
+footer {
+  grid-row: 3;
+  background: linear-gradient(93deg, rgb(49, 143, 30)0%, rgba(59, 139, 230)100%);
+  min-height: 70px;
+  padding: 20px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
+
+footer > p {
+  color: rgb(37, 37, 37);
+  text-align: center;
+}
+
+/* Navigation ------------------------------------------------*/
+nav {
+  grid-row: 1;
+  background: linear-gradient(93deg, rgb(49, 143, 30)0%, rgba(59, 139, 230)100%);
+  padding: 20px;
+  padding-top: 50px;
+  font-size: large;
+  color: rgb(149, 186, 233);
+  
+}
+
+nav > a {
+  color: rgb(149, 186, 233);
+  text-decoration: none;
+  font-size: x-large;
+  align-self: end;
+  padding: 5px 20px;
+}
+
+#log-out, .login{
+  color: rgb(169, 233, 149);
+  float: right;
+}
+
+
+
+/* Home page ---------------------------------------------*/
+
+h1 {
+  text-align: center;
+}
+
+#main-page-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 50px;
-  padding: 50px;
+  justify-content: center;
 }
 
+#main-image-button {
+  width: 450px;
+  height: 450px;
+  font-size: 0px;
+}
 
-
-#image-button {
+.image-button {
   width: 200px;
   height: 200px;
   background-size:cover;
@@ -30,6 +100,118 @@ a {
   border: none;
 }
 
-#image-button:hover {
+.image-button:hover {
   box-shadow: 0px 0px 30px 15px rgb(94, 104, 101) ;
 }
+
+#main-image-button:hover{
+  filter: grayscale(50%);
+  font-size: 100px;
+  color: black;
+}
+
+/* Main images page ------------------------------------ */
+
+#all-images-container {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+}
+
+#tag-links {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+#tag-links > a {
+  color: rgb(73, 95, 121);
+  text-decoration: none;
+  padding: 20px;
+  font-size: large;
+}
+
+#images-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 25px;
+  overflow: scroll;
+}
+
+.delete-buttons {
+  background-color: white;
+  border: 1px solid rgb(73, 95, 121);
+  color: rgb(73, 95, 121);
+  border-radius: 50%;
+  font-size: medium;
+}
+
+/* Show image page-------------------------- */
+
+#image-container{
+  grid-column: 2;
+  color: rgb(73, 95, 121);
+  text-decoration: none;
+  padding: 20px;
+  font-size: large;
+}
+
+#tags-on-image {
+  color: rgb(73, 95, 121);
+  padding: 20px;
+  font-size: large;
+}
+
+#add-tag-form {
+  color: rgb(73, 95, 121);
+  font-size: large;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  color: rgb(73, 95, 121);
+  font-size: large;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10%;
+}
+
+.add-or-edit-tag-button {
+  color: rgb(73, 95, 121);
+  font-size: medium;
+  margin: 10px 0px;
+  padding: 5px;
+  border-radius: 10%;
+}
+
+hr {
+  color: rgb(73, 95, 121);
+}
+/* Manage tags page--------------- */
+
+#current-tags{
+  display: flex;
+  flex-wrap: wrap;
+  color: rgb(73, 95, 121);
+  font-size: large;
+}
+
+#tags-loop {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#edit-button {
+  margin-left: 30px;
+  text-align: center;
+}
+
+input {
+  font-size: large;
+  background-color: white;
+  margin-top: 20px;
+  padding: 5px;
+  border-radius: 10%;
+}
+

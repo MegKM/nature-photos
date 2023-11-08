@@ -1,5 +1,22 @@
 <%- include('../partials/header') %>
+<main>
+    <img src="<%= user.avatar %>" alt="picture">
+    
+    <form action="/users" enctype="multipart/form-data" method="POST">
+      <div>
+        <input type="file" name="image">
+        <button type="submit">Upload</button>
+      </div>
+    </form>
 
+    <div id="images-container">
+        <% user.images.forEach(function(i){ %>
+            <% if(images._id === i) { %>
+            <p>yes</p>
+            <% } %>
+        <% }); %>
+    </div> 
+</main>
 
 
 <%- include('../partials/footer') %>

@@ -8,4 +8,10 @@ router.post('/image/:id/add-tag', tagsController.addTag);
 
 router.post('/tags', tagsController.create);
 
+router.get('/tags/:id/edit', tagsController.edit);
+
+router.delete('/tags/:id', tagsController.delete);
+
+router.put('/tags/:id', tagsController.update);
+
 module.exports = router;

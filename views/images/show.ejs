@@ -1,39 +1,52 @@
 <%- include('../partials/header') %>
+<main>
+<div id="all-images-container">
+    <div id="tags-on-image">
+        <% if(user){ %>
+            <% if(currentTags.length !== 0) { %>
+                <p>Current tags:</p>
+                    <% currentTags.forEach(function(t){ %>
+                        <form id="delete-tag-from-image" method="POST"
+                        action="/images/<%= image._id %>/<%= t.description %>?_method=DELETE">
+                            <p><span class="tooltip" title="Delete tag"> <button class="delete-buttons" type="submit">&times;</button> 
+                                <%= t.description%></p>
+                    </form>                
+                <% }) %> 
+            <% } %>
+              <hr>
+            <% if(currentTags.length !== tags.length){ %>
+                <form id="add-tag-form" method="POST"
+                    action="/image/<%= image._id %>/add-tag">
+                    <p>Select tag: </p>
+                    <select name="tagId">
+                            <% tags.forEach(function(t){ %>
+                                <% if(t.images.includes(image._id)){ %>
+                                    <% return; %>
+                                <% } else { %>
+                                    <option value="<%= t._id%>"><%= t.description%></option>
+                                <% } %>
+                            <%})%>
+                    </select>
+                    <button class="add-or-edit-tag-button">Add new tag</button>
+                </form>
+            <% } %>
+            <hr>
+            <form id="favourite-image" method="POST"
+                action="/users/<%= image._id %>/addFavourite">
+                <button class="add-or-edit-tag-button">Favourite</button>
+            </form>    
 
-<p><%= image.alt%></p>
+        <% } %>
+    </div>
 
+    <div id="image-container">
+        <p><%= image.alt%></p>
+        <img src="<%= image.src.large2x%>"> 
+        
+        <p> Photographer: <%= image.photographer%></p>
+        <p><a href="<%= image.photographer_url%>" target="_blank">View more work by this photographer</a></p>
+    </div>
+</div>
 
-<% if(currentTags.length !== 0) { %>
-    <label>Current tags:</label>
-    <% currentTags.forEach(function(t){ %>
-        <ul>
-            <li><%= t.description%></li>
-        </ul>
-    <% }) %> 
-<% } %>
-
-<% if(currentTags.length !== tags.length){ %>
-    <form id="add-tag-form" method="POST"
-        action="/image/<%= image._id %>/add-tag">
-        <select name="tagId">
-                <% tags.forEach(function(t){ %>
-                    <% if(t.images.includes(image._id)){ %>
-                        <% return; %>
-                    <% } else { %>
-                        <option value="<%= t._id%>"><%= t.description%></option>
-                    <% } %>
-                <%})%>
-        </select>
-        <button id="add-tag">Add new tag</button>
-    </form>
-<% } %>
-
-
-<hr>
-<img src="<%= image.src.large2x%>"> 
-
-
-<p> Photographer: <%= image.photographer%></p>
-<p><a href="<%= image.photographer_url%>" target="_blank">View more work by this photographer</a></p>
-
+</main>
 <%- include('../partials/footer') %>

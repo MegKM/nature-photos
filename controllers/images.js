@@ -4,7 +4,8 @@ const Tag = require('../models/tag');
 module.exports = {
     index,
     show,
-    filterByTag
+    filterByTag,
+    delete: deleteTagFromImage
 }
 
 async function index(req, res){
@@ -30,14 +31,23 @@ async function show(req, res){
 }
 
 async function filterByTag(req, res){
-    const tags = await Tag.find({});
+    const tags = await Tag.find({}).sort('description');
     const tag = await Tag.findOne({description: req.params.tagName}).populate('images');
-    console.log("tag: ", tag)
     const images = tag.images;
-    console.log('images: ', images)
     res.render('images/images', {
         images,
         tags,
         title: "Nature"
     });
+}
+
+async function deleteTagFromImage(req, res){
+    const tag = await Tag.findOne({description: req.params.tagName})
+    const image = await Image.findById(req.params.id);
+    const index = tag.images.indexOf(image._id)
+    if (index !== -1){
+        tag.images.splice(index, 1);
+    }
+    await tag.save();
+    res.redirect(`/images/${image._id}`)
 }

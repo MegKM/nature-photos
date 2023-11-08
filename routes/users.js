@@ -3,10 +3,12 @@ const router = express.Router();
 const upload  = require('../utilities/multer');
 const userController = require('../controllers/users');
 
-router.get('/', userController.index);
+router.get('/users', userController.index);
 
-router.post('/',upload.single('image'), userController.create);
+router.post('/users',upload.single('image'), userController.create);
 
-router.get('/:id', userController.show);
+router.get('/users/:id', userController.show);
+
+router.post('/users/:id/addFavourite', userController.addFavourite);
 
 module.exports = router;

@@ -1,15 +1,21 @@
 <%- include('./partials/header') %>
-  <h1><%= title %></h1>
 
-    <p>Welcome to <%= title %></p>
-    <img src="https://images.pexels.com/photos/1229846/pexels-photo-1229846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" width="500px">
-  
-<form action="/users" enctype="multipart/form-data" method="POST">
-  <div>
-    <input type="file" name="image">
-    <button type="submit">Upload</button>
+<main>
+  <h1><%= title %> Photos</h1>
+  <div id="main-page-container">
+    <form action="/images">
+      <button class="image-button" id="main-image-button"
+      style="background-image: url('https://images.pexels.com/photos/1229846/pexels-photo-1229846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+        <p>Images</p>
+      </button>
+    </form>
+    <form action="/auth/google" class="login">
+      <button class="image-button" id="main-image-button"
+      style="background-image: url('https://images.pexels.com/photos/5409751/pexels-photo-5409751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+        <p>Log In</p>
+      </button>
+    </form>
   </div>
-</form>
-
+</main>
 
 <%- include('./partials/footer') %>

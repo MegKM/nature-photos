@@ -1,21 +1,24 @@
 <%- include('../partials/header') %>
 
-<p>Display Images</p>
+<main>
+    <div id="all-images-container">
+        <div id="tag-links">
+            <a href="/Images">All images</a> 
 
-<a href="/Images">All Images</a> 
+            <% tags.forEach(function (t) { %>
+                <a href="/images/tagged/<%= t.description %>"><%=t.description%></a>
+            <%  }) %>
+        </div>
 
-<% tags.forEach(function (t) { %>
-    <a href="/images/tagged/<%= t.description %>"><%=t.description%></a>
-<% }) %>
-
-<div id="image-container">
-    <% images.forEach(function(i){ %>
-        <form id="view-image" method="GET"
-            action="/images/<%= i._id%>">
-            <button id="image-button" style="background-image: url('<%= i.src.tiny %>')"></button>
-        </form>
-    <% }); %>
-</div> 
-
+        <div id="images-container">
+            <% images.forEach(function(i){ %>
+                <form id="view-image" method="GET"
+                    action="/images/<%= i._id%>">
+                    <button class="image-button" style="background-image: url('<%= i.src.tiny %>')"></button>
+                </form>
+            <% }); %>
+        </div> 
+    </div>
+</main>
 <%- include('../partials/footer') %>
 
