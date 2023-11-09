@@ -1,5 +1,6 @@
 const Image = require('../models/image');
 const Tag = require('../models/tag');
+const User = require('../models/user');
 
 module.exports = {
     index,
@@ -24,10 +25,12 @@ async function show(req, res){
     const image = await Image.findById(req.params.id);
     const tags = await Tag.find({}).sort('description');
     const currentTags = await Tag.where('images').in([req.params.id]);
+    const user = req.user;
     res.render('images/show', {
         image,
         tags,
         currentTags,
+        user,
         title: "Nature"}
     );
 }

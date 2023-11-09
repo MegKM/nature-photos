@@ -24,23 +24,27 @@
                     action="/image/<%= image._id %>/add-tag">
                     <p>Select tag: </p>
                     <select name="tagId">
-                            <% tags.forEach(function(t){ %>
-                                <% if(t.images.includes(image._id)){ %>
-                                    <% return; %>
-                                <% } else { %>
-                                    <option value="<%= t._id%>"><%= t.description%></option>
-                                <% } %>
-                            <%})%>
+                        <% tags.forEach(function(t){ %>
+                            <% if(t.images.includes(image._id)){ %>
+                                <% return; %>
+                            <% } else { %>
+                                <option value="<%= t._id%>"><%= t.description%></option>
+                            <% } %>
+                        <%})%>
                     </select>
                     <button class="add-or-edit-tag-button">Add new tag</button>
                 </form>
             <% } %>
             <hr>
             <!--Allows the user to add the images to their favourited images for inclusion on their profile page-->
-            <form id="favourite-image" method="POST"
-                action="/users/<%= image._id %>/addFavourite">
-                <button class="add-or-edit-tag-button">Favourite</button>
-            </form>   
+            <% if(user.images.includes(image._id)) { %>
+                <p>Image in favourites</p> 
+            <% } else { %>
+                <form id="favourite-image" method="POST"
+                    action="/users/<%= image._id %>/addFavourite">
+                    <button class="add-or-edit-tag-button">Favourite</button>
+                </form>
+            <% } %>
         <% } %>
     </div>
     <!--Displays the alt text as the title, the image, the photographer and links you to the photographer's body of work (opening in a new tab)-->

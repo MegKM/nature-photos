@@ -3,6 +3,24 @@
     <p><%= user.name %> | Favourite images</p>
   <hr>
 
+
+
+  <!--Loops through all the images currently stored in the user's database and displays them-->
+  <div id="images-container">
+    <% user.images.forEach(function (image){ %>
+      <div id="favourite-images">
+      <form id="view-image" method="GET"
+        action="/images/<%= image._id%>">
+        <button class="image-button" style="background-image: url('<%= image.src.tiny %>')"></button>
+      </form>
+      <form id="delete-image-from-favourites" method="POST"
+        action="/users/<%=image._id%>?_method=DELETE">
+        <button type="submit" class="add-or-edit-tag-button" id="remove-image-from-favourites">Remove image</button>
+      </form>
+    </div>
+    <% });  %>
+  </div> 
+  
   <!--For future development: the ability for the user to upload their own images-->
     <!-- <form action="/users" enctype="multipart/form-data" method="POST">
       <div>
@@ -10,16 +28,7 @@
         <button type="submit">Upload</button>
       </div>
     </form> -->
-
-  <!--Loops through all the images currently stored in the user's database and displays them-->
-  <div id="images-container">
-    <% user.images.forEach(function (image){ %>
-      <form id="view-image" method="GET"
-        action="/images/<%= image._id%>">
-        <button class="image-button" style="background-image: url('<%= image.src.tiny %>')"></button>
-      </form>
-    <% });  %>
-  </div> 
+    
 </main>
 
 

@@ -6,13 +6,14 @@ module.exports = {
     index,
     show,
     create,
-    addFavourite
+    addFavourite,
+    delete: deleteFromFavourites
 }
 
 function index(req, res){
-    const users = User.find({});
+    const user = User.req;
     res.render('users/index', {
-        users,
+        user,
         title: "Users"
     })
 }
@@ -37,6 +38,16 @@ async function addFavourite(req, res){
     res.redirect(`/images/${image._id}`)
 }
 
+async function deleteFromFavourites(req, res){
+    const user = req.user
+    const image = await Image.findById(req.params.id)
+    const index = user.images.indexOf(image._id)
+    if (index !== -1){
+        user.images.splice(index, 1);
+    }
+    await user.save();
+    res.redirect(`/users/${user._id}`)
+}
 
 // Future functionality of allowing uses to upload their own images
 async function create(req, res){

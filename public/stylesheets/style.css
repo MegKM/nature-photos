@@ -213,4 +213,8 @@ input {
   border-radius: 10%;
 }
 
+/* User profile page-------------------- */
 
+#remove-image-from-favourites {
+  margin-left: 50px;
+}

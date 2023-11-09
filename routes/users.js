@@ -11,4 +11,6 @@ router.get('/users/:id', userController.show);
 
 router.post('/users/:id/addFavourite', userController.addFavourite);
 
+router.delete('/users/:id', userController.delete);
+
 module.exports = router;
