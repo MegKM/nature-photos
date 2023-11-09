@@ -64,5 +64,3 @@ async function create(req, res){
     console.log(err);
     }
 }
-
-
