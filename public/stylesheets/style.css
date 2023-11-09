@@ -15,14 +15,13 @@ body {
 }
 
 main {
+  margin-top: 0px 20px;
   padding: 20px;
-  margin: 20px;
 }
 
 main > p {
   font-size: large;
   color: rgb(73, 95, 121);
-
 }
 
 button {
@@ -32,8 +31,7 @@ button {
 footer {
   grid-row: 3;
   background: linear-gradient(93deg, rgb(49, 143, 30)0%, rgba(59, 139, 230)100%);
-  min-height: 70px;
-  padding: 20px;
+  padding: 10px;
   position: fixed;
   bottom: 0px;
   left: 0px;
@@ -76,6 +74,7 @@ nav > a {
 
 h1 {
   text-align: center;
+  font-size: xx-large;
 }
 
 #main-page-container {
@@ -106,7 +105,7 @@ h1 {
 
 #main-image-button:hover{
   filter: grayscale(50%);
-  font-size: 100px;
+  font-size: 80px;
   color: black;
 }
 
@@ -135,7 +134,6 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   margin: 25px;
-  overflow: scroll;
 }
 
 .delete-buttons {
@@ -214,4 +212,5 @@ input {
   padding: 5px;
   border-radius: 10%;
 }
+
 

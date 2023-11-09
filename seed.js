@@ -3,6 +3,7 @@ require('./config/database');
 
 const Tag = require('./models/tag');
 
+//Used to add original list of tags to the database
 async function addTags(){
     await Tag.create({description: "Animal"});
     await Tag.create({description: "Desert"});

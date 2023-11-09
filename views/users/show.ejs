@@ -1,22 +1,25 @@
 <%- include('../partials/header') %>
 <main>
-    <img src="<%= user.avatar %>" alt="picture">
-    
-    <form action="/users" enctype="multipart/form-data" method="POST">
+    <p><%= user.name %> | Favourite images</p>
+  <hr>
+
+  <!--For future development: the ability for the user to upload their own images-->
+    <!-- <form action="/users" enctype="multipart/form-data" method="POST">
       <div>
         <input type="file" name="image">
         <button type="submit">Upload</button>
       </div>
-    </form>
+    </form> -->
 
-    <div id="images-container">
-        <% user.images.forEach(function(i){ %>
-            <% if(images._id === i) { %>
-                
-            <p>yes</p>
-            <% } %>
-        <% }); %>
-    </div> 
+  <!--Loops through all the images currently stored in the user's database and displays them-->
+  <div id="images-container">
+    <% user.images.forEach(function (image){ %>
+      <form id="view-image" method="GET"
+        action="/images/<%= image._id%>">
+        <button class="image-button" style="background-image: url('<%= image.src.tiny %>')"></button>
+      </form>
+    <% });  %>
+  </div> 
 </main>
 
 

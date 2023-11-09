@@ -2,19 +2,24 @@
 <main>
 <div id="all-images-container">
     <div id="tags-on-image">
+        <!--If the user is logged it: displays the list of current tags, the ability to add a tag, and favourite the image.-->
         <% if(user){ %>
+            <!--Shows current tags only if the image actually has tags-->
             <% if(currentTags.length !== 0) { %>
                 <p>Current tags:</p>
-                    <% currentTags.forEach(function(t){ %>
-                        <form id="delete-tag-from-image" method="POST"
+                <% currentTags.forEach(function(t){ %>
+                    <!--Ability to delete the tag from the image-->
+                    <form id="delete-tag-from-image" method="POST"
                         action="/images/<%= image._id %>/<%= t.description %>?_method=DELETE">
                             <p><span class="tooltip" title="Delete tag"> <button class="delete-buttons" type="submit">&times;</button> 
-                                <%= t.description%></p>
+                            <%= t.description%></p>
                     </form>                
                 <% }) %> 
             <% } %>
-              <hr>
+            <hr>
+            <!--Shows only if there are tags that can be added-->
             <% if(currentTags.length !== tags.length){ %>
+                <!--Users can choose a tag from a pre-defined drop down list-->
                 <form id="add-tag-form" method="POST"
                     action="/image/<%= image._id %>/add-tag">
                     <p>Select tag: </p>
@@ -31,17 +36,17 @@
                 </form>
             <% } %>
             <hr>
+            <!--Allows the user to add the images to their favourited images for inclusion on their profile page-->
             <form id="favourite-image" method="POST"
                 action="/users/<%= image._id %>/addFavourite">
                 <button class="add-or-edit-tag-button">Favourite</button>
-            </form>    
-
+            </form>   
         <% } %>
     </div>
-
+    <!--Displays the alt text as the title, the image, the photographer and links you to the photographer's body of work (opening in a new tab)-->
     <div id="image-container">
         <p><%= image.alt%></p>
-        <img src="<%= image.src.large2x%>"> 
+        <img src="<%= image.src.large%>"> 
         
         <p> Photographer: <%= image.photographer%></p>
         <p><a href="<%= image.photographer_url%>" target="_blank">View more work by this photographer</a></p>

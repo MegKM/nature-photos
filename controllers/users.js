@@ -17,16 +17,28 @@ function index(req, res){
     })
 }
 
+//Shows the user their own unique page of favourited images
 async function show(req, res){
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id).populate('images');
     const images = await Image.find({});
     res.render('users/show', {
         user,
         images,
-        title: "Users Details", 
+        title: "Profile", 
 });
 }
 
+//Gets the images id and adds it to the user's database
+async function addFavourite(req, res){
+    const image = await Image.findById(req.params.id)
+    const user = req.user
+    user.images.push(image)
+    user.save();
+    res.redirect(`/images/${image._id}`)
+}
+
+
+// Future functionality of allowing uses to upload their own images
 async function create(req, res){
     try {
         const result = await cloudinary.uploader.upload(req.file.path);
@@ -42,10 +54,4 @@ async function create(req, res){
     }
 }
 
-async function addFavourite(req, res){
-    const image = await Image.findById(req.params.id)
-    user = req.user
-    user.images.push(image)
-    user.save();
-    res.redirect(`/images/${image._id}`)
-}
+

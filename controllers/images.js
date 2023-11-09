@@ -8,6 +8,7 @@ module.exports = {
     delete: deleteTagFromImage
 }
 
+//Renders all the images currently in the database
 async function index(req, res){
     const images = await Image.find({});
     const tags = await Tag.find({}).sort('description');
@@ -18,6 +19,7 @@ async function index(req, res){
     });
 }
 
+//Shows one specific image from the database, based on the images ID
 async function show(req, res){
     const image = await Image.findById(req.params.id);
     const tags = await Tag.find({}).sort('description');
@@ -30,6 +32,7 @@ async function show(req, res){
     );
 }
 
+//Filters all images in the database based on the tag selected and displays them
 async function filterByTag(req, res){
     const tags = await Tag.find({}).sort('description');
     const tag = await Tag.findOne({description: req.params.tagName}).populate('images');
@@ -41,6 +44,7 @@ async function filterByTag(req, res){
     });
 }
 
+//Allows the user to remove a tag from an image, updates the datatbase
 async function deleteTagFromImage(req, res){
     const tag = await Tag.findOne({description: req.params.tagName})
     const image = await Image.findById(req.params.id);

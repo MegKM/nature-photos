@@ -3,14 +3,14 @@
 <main>
     <div id="all-images-container">
         <div id="tag-links">
+            <!--Displays all the current tags on the screen-->
             <a href="/Images">All images</a> 
-
             <% tags.forEach(function (t) { %>
                 <a href="/images/tagged/<%= t.description %>"><%=t.description%></a>
             <%  }) %>
         </div>
-
         <div id="images-container">
+            <!--Displays the images dynamically on the page, is effected by the filterTag method-->
             <% images.forEach(function(i){ %>
                 <form id="view-image" method="GET"
                     action="/images/<%= i._id%>">
@@ -20,5 +20,6 @@
         </div> 
     </div>
 </main>
+
 <%- include('../partials/footer') %>
 
