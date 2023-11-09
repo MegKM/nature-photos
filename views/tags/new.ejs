@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<main>
+    <!--Allows the user to create their own tag-->
+    <p>Manage tags:</p>
+        <form id="create-new-tag" method="POST"
+        action="/tags">
+        <input type="text" name="description">
+        <button class="add-or-edit-tag-button" type="submit">Create tag</button>
+    </form>
+    <!--Displays all current tags with delete and edit buttons-->
+    <p>Current tags:</p>
+    <div id="current-tags">
+        <% tags.forEach(function (t) { %>
+            <div id="tags-loop">
+            <form id="delete-tag" method="POST"
+                action="/tags/<%= t._id%>?_method=DELETE">
+                <span class="tooltip" title="Delete tag"><button class="delete-buttons" type="submit">&times;</button>
+                <%=t.description%>
+            </form>
+        
+            <form id="edit-tag" method="GET"
+                action="/tags/<%= t._id%>/edit">
+                <button class="add-or-edit-tag-button" id="edit-button" type="submit">Edit</button> &emsp; &emsp;
+            </form>
+        </div>
+        <% }) %>
+    </div>
+</main>
+<%- include('../partials/footer') %>

@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+<main>
+<!--Allows the user to update a tag currently in the tag database-->    
+<p>Edit</p>
+<form action="/tags/<%=tag._id%>?_method=PUT" method="POST">
+    <input type="text" name="tag" value="<%= tag.description %>">
+    <button type="submit" class="add-or-edit-tag-button" >Save</button>
+
+</form>
+</main>
+
+<%- include('../partials/footer') %>
