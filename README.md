@@ -8,6 +8,19 @@ Users can also favourite images which are saved to the user's profile page.
 
 The site is live on Heroku and can be visited [here](https://nature-photos-394e18c571b1.herokuapp.com/).
 
+## Screenshots
+### Homepage
+![Image of homepage](public/images/homepage.png)
+
+### Images Page
+![Image of images page](public/images/images.png)
+
+### Tags Page
+![Image of tags page](public/images/tags.png)
+
+### Favourites Page
+![Image of favourites page](public/images/favourites.png)
+
 ## Tehcnologies Used
 * JavaScript
 * CSS/HTML

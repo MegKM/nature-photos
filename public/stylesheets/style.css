@@ -84,9 +84,17 @@ h1 {
 }
 
 #main-image-button {
-  width: 450px;
-  height: 450px;
+  min-width: 200px;
+  min-height: 200px;
+  width: 30vw;
+  height: 53.4vh;
   font-size: 0px;
+}
+
+#main-image-button:hover{
+  filter: grayscale(50%);
+  font-size: 5vw;
+  color: black;
 }
 
 .image-button {
@@ -101,12 +109,6 @@ h1 {
 
 .image-button:hover {
   box-shadow: 0px 0px 30px 15px rgb(94, 104, 101) ;
-}
-
-#main-image-button:hover{
-  filter: grayscale(50%);
-  font-size: 80px;
-  color: black;
 }
 
 /* Main images page ------------------------------------ */
